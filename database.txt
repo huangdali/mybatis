@@ -1,0 +1,10 @@
+drop table if exists user;
+create table user(id int primary key not null auto_increment,
+	username varchar(40),
+	birthday date,
+	sex char(1),
+	address varchar(255)
+)
+
+insert into user(username,birthday,sex,address) values("黄大力","1992-07-24","男","贵州财经大学");
+insert into user(username,birthday,sex,address) values("唐菊","1993-10-09","女","贵州财经大学");
