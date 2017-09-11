@@ -37,7 +37,7 @@
 　
 以上这些环境配置（<environments>标签中的内容在以后和Spring整合后，都会交给Spring来管理，现在暂时交给 mybatis来管理）中，修改成自己数据库相对应的情况即可，<mapper>标签用来配置映射文件的，这些映射文件是针对不同的pojo的，这个示例中只操作一个User对象，所以只有一个配置文件，在sqlmap目录下的User.xml，在下文中可以看到。
 
-![](https:github.com/huangdali/mybatis/blog/master/images.png)
+![](https://github.com/huangdali/mybatis/blob/master/images.png)
 
 2、创建pojo
 ```java
