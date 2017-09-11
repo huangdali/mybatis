@@ -18,6 +18,6 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="sqlmap/User.xml"/>
+        <mapper resource="config/sqlmap/User.xml"/>
     </mappers>
 </configuration>
