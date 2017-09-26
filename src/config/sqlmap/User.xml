@@ -8,4 +8,22 @@
     <select id="findUserById" parameterType="int" resultType="com.hdl.po.User">
         select * from user where id = #{id}
     </select>
+    <select id="findUser" resultType="com.hdl.po.User">
+        SELECT * from user
+    </select>
+    <!--新增用户-->
+    <insert id="addUser" parameterType="com.hdl.po.User">
+        INSERT INTO user(username,birthday,sex,address) VALUES (#{username},#{birthday},#{sex},#{address })
+        <selectKey keyProperty="id" order="AFTER" resultType="int">
+            SELECT last_insert_id()
+        </selectKey>
+    </insert>
+    <!--修改用户-->
+    <insert id="updateUserById" parameterType="com.hdl.po.User">
+        UPDATE user set username=#{username},birthday=#{birthday},sex=#{sex},address=#{address} WHERE id=#{id}
+    </insert>
+    <!--删除用户-->
+    <delete id="deleteUserById" parameterType="com.hdl.po.User">
+        DELETE FROM user WHERE id=#{id}
+    </delete>
 </mapper>

@@ -5,10 +5,19 @@ package com.hdl.po;
  * Created by HDL on 2017/9/11.
  */
 public class User {
+    private int id;
     private String username;
     private String birthday;
     private String sex;
     private String address;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;
@@ -44,11 +53,12 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", birthday='" + birthday + '\'' +
-                ", sex='" + sex + '\'' +
-                ", address='" + address + '\'' +
+        return "User{\t" +
+                "id=" + id +
+                ", \tusername='" + username + '\'' +
+                ", \t\t\t\tbirthday='" + birthday + '\'' +
+                ", \tsex='" + sex + '\'' +
+                ", \taddress='" + address + '\'' +
                 '}';
     }
 }
