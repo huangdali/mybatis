@@ -19,6 +19,6 @@
     </environments>
     <mappers>
         <mapper resource="config/sqlmap/User.xml"/>
-        <mapper resource="com/hdl/mapper/UserMapper.xml"/>
+        <mapper class="com.hdl.mapper.UserMapper"/>
     </mappers>
 </configuration>

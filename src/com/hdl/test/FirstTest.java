@@ -1,5 +1,6 @@
 package com.hdl.test;
 
+import com.hdl.mapper.UserMapper;
 import com.hdl.po.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -31,7 +32,9 @@ public class FirstTest {
     @Test
     public void findUserById() throws IOException {
         SqlSession seesion = getSeesion();
-        User user = seesion.selectOne("test.findUserById", 15);
+//        User user = seesion.selectOne("test.findUserById", 15);
+        UserMapper mapper = seesion.getMapper(UserMapper.class);
+        User user = mapper.findUserById(51);
         System.out.println(user);
         seesion.close();
     }
@@ -44,7 +47,9 @@ public class FirstTest {
     @Test
     public void findUser() throws IOException {
         SqlSession seesion = getSeesion();
-        List<User> users = seesion.selectList("test.findUser");
+//        List<User> users = seesion.selectList("test.findUser");
+        UserMapper mapper = seesion.getMapper(UserMapper.class);
+        List<User> users = mapper.findUser();
         for (User user : users) {
             System.out.println(user);
         }
@@ -59,13 +64,15 @@ public class FirstTest {
     @Test
     public void addUser() throws IOException {
         SqlSession seesion = getSeesion();
-        for (int i = 0; i < 20; i++) {
+        UserMapper mapper = seesion.getMapper(UserMapper.class);
+        for (int i = 30; i < 50; i++) {
             User user = new User();
             user.setAddress("中国大陆");
             user.setUsername(i + "大" + (i + 1) + "力" + (i + 2) + "哥" + (i + 3));
-            user.setBirthday("2017-09-" + i);
+            user.setBirthday("2017-09-01");
             user.setSex("男");
-            seesion.insert("test.addUser", user);
+//            seesion.insert("test.addUser",user);
+            mapper.addUser(user);
         }
         seesion.commit();//除了查询操作以外的操作都需要commit
         seesion.close();//即使关闭资源
@@ -80,12 +87,14 @@ public class FirstTest {
         try {
             User user = new User();
             user.setId(51);
-            user.setAddress("贵州省贞丰县");
-            user.setUsername("大力哥");
-            user.setBirthday("2017-09-24");
+            user.setAddress("贵州贞丰");
+            user.setUsername("大力");
+            user.setBirthday("2017-09-20");
             user.setSex("男");
             sqlSession = getSeesion();
-            sqlSession.update("test.updateUserById", user);
+            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+//            sqlSession.update("test.updateUserById", user);
+            mapper.updateUserById(user);
             sqlSession.commit();
         } catch (IOException e) {
             e.printStackTrace();
@@ -103,7 +112,9 @@ public class FirstTest {
     public void deleteUserById() {
         try {
             SqlSession seesion = getSeesion();
-            seesion.delete("test.deleteUserById", 50);
+            UserMapper mapper = seesion.getMapper(UserMapper.class);;
+//            seesion.delete("test.deleteUserById", 50);
+            mapper.deleteUserById(52);
             seesion.commit();
             seesion.close();
         } catch (IOException e) {
